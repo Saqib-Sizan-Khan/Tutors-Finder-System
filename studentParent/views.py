@@ -1,13 +1,14 @@
 from django.shortcuts import render,redirect
 from .models import StudentParent,TemporarySP
 from educator.models import HomeEducator,OutsideEducator,HomeEducatorSubjects,OutsideEducatorSubjects
+from home.models import Request,Deals
 from django.contrib import messages
 from django.db.models import Q
 
-# Create your views here.
 
 def parentAuthication(request):
     return render(request,'studentParent/authication.html')
+
 
 def parentSignUp(request):
     if request.method == 'GET':
@@ -49,14 +50,6 @@ def parentLogin(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-
-        # if Customer.objects.filter(customerName=username).exists():
-        #     if Customer.objects.filter(customerPassword=password).exists():
-        #
-        #         customer = Customer.objects.get(Q(customerName=username) & Q(customerPassword=password))
-        #
-        #         context = {'customer':customer}
-        #         return render(request, 'studentParent/profileinfo.html', context)
 
         if StudentParent.objects.filter(parentName=username).exists():
             if StudentParent.objects.filter(parentPassword=password).exists():
@@ -170,17 +163,6 @@ def searchEducator(request):
         educatortype = request.POST["educatortype"]
         location = request.POST["location"]
 
-        # if hbutton!="":
-        #     home_educator = HomeEducator.objects.filter(homeTutorName=hbutton)
-        #     context = {'home_educator': home_educator}
-        #     return render(request, "studentParent/hrequestpage.html", context)
-        #
-        # elif obutton!="":
-        #     outside_educator = OutsideEducator.objects.filter(outsideTutorName=obutton)
-        #     context = {'outside_educator': outside_educator}
-        #     return render(request, "studentParent/orequestpage.html", context)
-        #
-        # else:
         if educatortype == "Home Educator":
             home_educator = HomeEducator.objects.filter(homeTutorLocation=location)
             context = {'home_educator': home_educator,'type':'Home Educator','location':location,'hname':'Name','hid':'ID','uni':'University','exp':'Experience','hloc':'Location'}
@@ -189,7 +171,6 @@ def searchEducator(request):
             context = {'outside_educator': outside_educator,'type':'Outside Educator','location':location,'oname':'Name','oid':'ID','ins':'Institute','des':'Designation','oloc':'Location'}
 
         return render(request,"studentParent/educatorsearch.html",context)
-
 
     else:
         return render(request, "studentParent/educatorsearch.html")
@@ -213,11 +194,3 @@ def showEducatorDetails(request):
 
     else:
         return render(request, "studentParent/showdetails.html")
-
-
-def confirmRequest(request):
-    if request.method == "POST":
-        educatortype = request.POST["educatortype"]
-        id = request.POST["id"]
-
-    return render(request,"studentParent/confirmrequest.html")

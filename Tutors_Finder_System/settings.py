@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'educator',
     'studentParent',
-    'administrator',
     'home',
     'examDetails',
 ]
