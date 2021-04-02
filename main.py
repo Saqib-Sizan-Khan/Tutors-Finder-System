@@ -1,6 +1,5 @@
 import pandas as pd
 from educator.models import HomeEducator,OutsideEducator,HomeEducatorSubjects,OutsideEducatorSubjects
-from home.models import Subjects
 
 #home educator data read
 df = pd.read_csv("Home_Educator_Info.csv")

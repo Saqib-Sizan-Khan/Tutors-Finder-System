@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Tutors Finder | Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'home/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'home/teamdes.css' %}">
+    <link rel="stylesheet" href="{% static 'home/articlelist.css' %}">
+    <link rel="stylesheet" href="{% static 'home/featurebox.css' %}">
+    <link rel="stylesheet" href="{% static 'home/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'home/homepage.css' %}">
+
+</head>
+
+<body>
+    <!-- Start: sticky dark top nav with dropdown -->
+    <nav class="navbar navbar-light navbar-expand-md navbar-fixed-top navigation-clean-button"
+        style="color: rgb(15,127,239); max-height: 520px; min-height: 120px;">
+        <div class="container">
+            <div>
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <span><img class="img-fluid" src="{% static 'home/logo2.jpg' %}"></span>
+                </a>
+                <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"
+                    style="color: #242943; background: #ffffff;">
+
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav nav-right" style="color: rgb(255, 255, 255);">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'home' %}" style="color: rgb(255,255,255); background-color: #f4476b">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'educatorauth' %}" style="color: rgb(255,255,255);">Educator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'parentauth' %}" style="color: rgb(252,252,252);">Parent</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'aboutus' %}" style="color: rgb(255,252,252);">About Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End: sticky dark top nav with dropdown -->
+
+    <section id="backgroundcover-section">
+        <div class="jumbotron" data-aos="fade-down" data-aos-duration="1400" data-aos-delay="500" id="title" style="margin-bottom: 100px;padding-bottom: 100px;">
+            <h1 class="pulse animated infinite" id="title-heading" style="font-style: normal;color: rgb(42,6,102);">Tutors Finder System</h1>
+            <p data-aos="fade-up" data-aos-duration="1400" data-aos-delay="900" data-aos-once="true" id="description-para" style="color: rgb(42,6,102);"><br>The&nbsp;<strong>goal</strong>&nbsp;of the this system is to help students overcome academic challenges and lead them to autonomous or independent learning. It is a special kind of website that will help student to find the way of glorious
+                achievements in life.<br><br></p>
+            <p><a class="btn btn-primary" role="button" data-aos="fade-up" data-aos-duration="1400" data-aos-delay="900" data-aos-once="true" style="background-color: #f87516;font-style: normal;font-size: 20px;font-weight: bold;">Services</a></p>
+        </div>
+    </section>
+    <!-- Start: Article List -->
+    <div class="article-list">
+        <div class="container">
+            <!-- Start: Intro -->
+            <div class="intro">
+                <h2 class="text-center" data-aos="zoom-in" data-aos-duration="1400" data-aos-delay="500" id="users-heading-id">Who Can Use</h2>
+                <p class="text-center" data-aos="zoom-in" data-aos-duration="1400" data-aos-delay="500" id="user-para-id">Catagory of users and their descriptions.</p>
+            </div>
+            <!-- End: Intro -->
+            <!-- Start: Articles -->
+            <div class="row articles">
+                <div class="col-sm-6 col-md-4 offset-xl-1 item" data-aos="zoom-in" data-aos-duration="1400" data-aos-delay="500"><a href="{% url 'educatorauth' %}"><img class="img-fluid" src="{% static 'home/pexels-max-fischer-5212320.jpg' %}"></a>
+                    <h3 class="name">Educators Panal</h3>
+                    <p class="description">An educator can register with his desirable subjects which he will be able to teach the students. He can also select his location, where he can find his students.</p><a class="action" href="#"><i class="fa fa-arrow-circle-right"></i></a></div>
+                <div
+                    class="col-sm-6 col-md-4 offset-xl-2 item" data-aos="zoom-in" data-aos-duration="1400" data-aos-delay="500"><a href="{% url 'parentauth' %}"><img class="img-fluid" src="{% static 'home/pexels-andrea-piacquadio-3769981.jpg' %}"></a>
+                    <h3 class="name">Parents Panal</h3>
+                    <p class="description">A parent can search for a teacher&nbsp; for his/her child. Here he/she can search by location and desirable subjects, then confirm the request towards the teacher.</p><a class="action" href="#"><i class="fa fa-arrow-circle-right"></i></a></div>
+        </div>
+        <!-- End: Articles -->
+    </div>
+    </div>
+    <!-- End: Article List -->
+    <!-- Start: Features Boxed -->
+    <div class="features-boxed">
+        <div class="container">
+            <!-- Start: Intro -->
+            <div class="intro">
+                <h2 class="text-center" data-aos="zoom-in" data-aos-duration="1400" data-aos-delay="500" id="offer-heading-id" style="margin-top: 40px;">What We Offer</h2>
+                <p class="text-center" data-aos="zoom-in" data-aos-duration="1400" data-aos-delay="500" id="offer-para-id">We offer the following features for the users.</p>
+            </div>
+            <!-- End: Intro -->
+            <!-- Start: Features -->
+            <div class="row justify-content-center features" data-aos="fade">
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div data-aos="fade-right" data-aos-duration="1400" data-aos-delay="500" class="box"><i class="fa fa-map-marker icon"></i>
+                        <h3 class="name">Search by location</h3>
+                        <p class="description">Both tutors and parents can search by specific location of tution.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div data-aos="fade-down" data-aos-duration="1400" data-aos-delay="500" class="box"><i class="fa fa-book icon"></i>
+                        <h3 class="name">Find subjects</h3>
+                        <p class="description">Parents can easily find for desirable subjects for their child.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div data-aos="fade-left" data-aos-duration="1400" data-aos-delay="500" class="box"><i class="fa fa-comment icon"></i>
+                        <h3 class="name">Rating</h3>
+                        <p class="description">Parents can give ratings to the tutors as their performance.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div data-aos="fade-right" data-aos-duration="1400" data-aos-delay="500" class="box"><i class="fa fa-user-o icon"></i>
+                        <h3 class="name">Home tutor</h3>
+                        <p class="description">Users can find home tutors as their criteria, who will teach in the home.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div data-aos="fade-up" data-aos-duration="1400" data-aos-delay="500" class="box"><i class="fa fa-user icon"></i>
+                        <h3 class="name">Outside tutor</h3>
+                        <p class="description">Users can search outside tutors, who teach in the outside along with many student</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div data-aos="fade-left" data-aos-duration="1400" data-aos-delay="500" class="box"><i class="fa fa-clock-o icon"></i>
+                        <h3 class="name">Available 24/7 days</h3>
+                        <p class="description">Users can use this system 24 hours and 7 days in the week.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- End: Features -->
+        </div>
+    </div>
+    <!-- End: Features Boxed -->
+    <!-- Start: Footer Dark -->
+    <div class="footer-dark">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <!-- Start: Services -->
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="{% url 'login' %}">Educator Login</a></li>
+                            <li><a href="{% url 'parentlogin' %}">Parent Login</a></li>
+                            <li><a href="#">Home</a><a href="#"></a></li>
+                        </ul>
+                    </div>
+                    <!-- End: Services -->
+                    <!-- Start: About -->
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="{% url 'aboutus' %}">About Us</a></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                    <!-- End: About -->
+                    <!-- Start: Footer Text -->
+                    <div class="col-md-6 item text">
+                        <h3>Company Name</h3>
+                        <p>Tutors Finder System.<br>A trusted site for education.</p>
+                    </div>
+                    <!-- End: Footer Text -->
+                    <!-- Start: Social Icons -->
+                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-whatsapp"></i></a><a href="#"><i class="icon ion-social-github"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                    <!-- End: Social Icons -->
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- End: Footer Dark -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'home/homepage.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
