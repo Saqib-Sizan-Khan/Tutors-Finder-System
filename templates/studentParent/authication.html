@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Parent Authentication Page</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'studentParent/parentauth.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'home/navbar.css' %}">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-light navbar-expand-md navbar-fixed-top navigation-clean-button"
+        style="color: rgb(15,127,239); max-height: 520px; min-height: 120px;">
+        <div class="container">
+            <div>
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <span><img class="img-fluid" src="{% static 'home/logo2.png' %}"></span>
+                </a>
+                <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"
+                    style="color: #242943; background: #ffffff;">
+
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav nav-right" style="color: rgb(255, 255, 255);">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}" style="color: rgba(255,255,255);">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'educatorauth' %}" style="color: rgb(255,255,255);">Educator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'parentauth' %}" style="color: rgb(252,252,252); background-color: #f4476b">Parent</a>
+                    </li>
+                    <li class="nav-item" style="color: rgb(255, 255, 255);">
+                        <a class="nav-link" href="#" style="color: rgb(255,252,252);">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End: sticky dark top nav with dropdown -->
+
+    <!-- Start: Highlight Clean -->
+    <section class="highlight-clean"
+        style="background: linear-gradient(133deg, #efea07 15%, #db28a5 95%);height: 800px;">
+        <div class="container" style="margin-top: 20px;">
+            <!-- Start: Intro -->
+            <div class="intro">
+                <img src="{% static 'studentParent/logo.png' %}" class="rounded mx-auto d-block">
+                <h2 class="text-center">Parent Authentication</h2>
+            </div><!-- End: Intro -->
+
+            <!-- Start: Buttons -->
+            <div class="buttons">
+                <a class="btn btn-primary shadow" role="button" href="{% url 'parentsignup' %}"
+                    style="padding: 40px;background: var(--pink);font-size: 20px;">Sign UP</a>
+
+                <a class="btn btn-light shadow" role="button" href="{% url 'parentlogin' %}"
+                    style="padding: 40px;background: var(--yellow);font-size: 20px;">log in</a>
+            </div><!-- End: Buttons -->
+        </div>
+    </section><!-- End: Highlight Clean -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1>Home Educator List</h1>
+
+    <table align="center" border="2px">
+        <thead style="font-weight: bold; font-size: 25px">
+            <tr align="center">
+                <td>Name</td>
+                <td>ID</td>
+                <td>Email</td>
+                <td>University</td>
+                <td>Department</td>
+                <td>Experience</td>
+                <td>Location</td>
+                <td>Contact</td>
+                <td>Rating</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for he in heducator %}
+                <tr align="center">
+{#                    <td>{{ he.name }}</td>#}
+{#                    <td>{{ he.email }}</td>#}
+{#                    <td>{{ he.university }}</td>#}
+{#                    <td>{{ he.department }}</td>#}
+{#                    <td>{{ he.location }}</td>#}
+
+                    {% for h in he %}
+                        <td>{{ h }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <button style="margin-top: 2%; margin-left: 2%"><a href="{% url 'logout' %}">Log Out</a></button>
+
+</body>
+</html>
