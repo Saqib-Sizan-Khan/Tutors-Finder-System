@@ -97,7 +97,7 @@ def updateInfo(request):
         password = request.POST['password']
         password_repeat = request.POST['password_repeat']
 
-        if email!='' and location!='None' and contact!='' and password!='' and password==password_repeat:
+        if email!='' and location!='' and contact!='' and password!='' and password==password_repeat:
             x = TemporarySP.objects.get(id=1)
             parent = StudentParent.objects.get(Q(parentName=x.parentName) & Q(parentPassword=x.parentPassword))
             parent.parentEmail = email
@@ -148,114 +148,6 @@ def updateInfo(request):
             x.save()
             messages.info(request,"Password updated")
             return render(request, 'studentParent/updateinfo.html')
-
-        elif email!='' and location=='None' and contact=='' and password!='' and password==password_repeat:
-            x = TemporarySP.objects.get(id=1)
-            parent = StudentParent.objects.get(Q(parentName=x.parentName) & Q(parentPassword=x.parentPassword))
-            parent.parentEmail = email
-            parent.parentPassword = password
-            x.parentPassword = password
-            parent.save()
-            x.save()
-            messages.info(request,"Email & Password updated")
-            return render(request, 'studentParent/updateinfo.html')
-
-        elif email=='' and location!='None' and contact=='' and password!='' and password==password_repeat:
-            x = TemporarySP.objects.get(id=1)
-            parent = StudentParent.objects.get(Q(parentName=x.parentName) & Q(parentPassword=x.parentPassword))
-            parent.parentLocation = location
-            parent.parentPassword = password
-            x.parentPassword = password
-            parent.save()
-            x.save()
-            messages.info(request,"Location & Password updated")
-            return render(request, 'studentParent/updateinfo.html')
-
-        elif email=='' and location=='None' and contact!='' and password!='' and password==password_repeat:
-            x = TemporarySP.objects.get(id=1)
-            parent = StudentParent.objects.get(Q(parentName=x.parentName) & Q(parentPassword=x.parentPassword))
-            parent.parentContact = contact
-            parent.parentPassword = password
-            x.parentPassword = password
-            parent.save()
-            x.save()
-            messages.info(request,"Contact & Password updated")
-            return render(request, 'studentParent/updateinfo.html')
-
-        elif email != '' and location == 'None' and contact != '' and password == '':
-            x = TemporarySP.objects.get(id=1)
-            parent = StudentParent.objects.get(Q(parentName=x.parentName) & Q(parentPassword=x.parentPassword))
-            parent.parentEmail = email
-            parent.parentContact = contact
-            parent.save()
-            messages.info(request, "Email & Contact updated")
-            return render(request, 'studentParent/updateinfo.html')
-
-        elif email != '' and location != 'None' and contact == '' and password == '':
-            x = TemporarySP.objects.get(id=1)
-            parent = StudentParent.objects.get(Q(parentName=x.parentName) & Q(parentPassword=x.parentPassword))
-            parent.parentEmail = email
-            parent.parentLocation = location
-            parent.save()
-            messages.info(request, "Email & Location updated")
-            return render(request, 'studentParent/updateinfo.html')
-
-        elif email == '' and location != 'None' and contact != '' and password == '':
-            x = TemporarySP.objects.get(id=1)
-            parent = StudentParent.objects.get(Q(parentName=x.parentName) & Q(parentPassword=x.parentPassword))
-            parent.parentContact = contact
-            parent.parentLocation = location
-            parent.save()
-            messages.info(request, "Location & Contact updated")
-            return render(request, 'studentParent/updateinfo.html')
-
-        elif email != '' and location != 'None' and contact != '' and password == '':
-            x = TemporarySP.objects.get(id=1)
-            parent = StudentParent.objects.get(Q(parentName=x.parentName) & Q(parentPassword=x.parentPassword))
-            parent.parentEmail = email
-            parent.parentLocation = location
-            parent.parentContact = contact
-            parent.save()
-            messages.info(request, "Email, Location & Contact updated")
-            return render(request, 'studentParent/updateinfo.html')
-
-        elif email!='' and location!='None' and contact=='' and password!='' and password==password_repeat:
-            x = TemporarySP.objects.get(id=1)
-            parent = StudentParent.objects.get(Q(parentName=x.parentName) & Q(parentPassword=x.parentPassword))
-            parent.parentEmail = email
-            parent.parentLocation = location
-            parent.parentPassword = password
-            x.parentPassword = password
-            parent.save()
-            x.save()
-            messages.info(request,"Email, Location & Password updated")
-            return render(request, 'studentParent/updateinfo.html')
-
-        elif email=='' and location!='None' and contact!='' and password!='' and password==password_repeat:
-            x = TemporarySP.objects.get(id=1)
-            parent = StudentParent.objects.get(Q(parentName=x.parentName) & Q(parentPassword=x.parentPassword))
-            parent.parentLocation = location
-            parent.parentContact = contact
-            parent.parentPassword = password
-            x.parentPassword = password
-            parent.save()
-            x.save()
-            messages.info(request,"Location, Contact & Password updated")
-            return render(request, 'studentParent/updateinfo.html')
-
-        elif email!='' and contact!='' and password!='' and password==password_repeat:
-            x = TemporarySP.objects.get(id=1)
-            parent = StudentParent.objects.get(Q(parentName=x.parentName) & Q(parentPassword=x.parentPassword))
-            parent.parentEmail = email
-            parent.parentContact = contact
-            parent.parentPassword = password
-            x.parentPassword = password
-            parent.save()
-            x.save()
-            messages.info(request,"Email, Contact & Password updated")
-            return render(request, 'studentParent/updateinfo.html')
-
-
 
         else:
             messages.info(request, "Info not update")
