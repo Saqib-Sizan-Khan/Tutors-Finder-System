@@ -47,6 +47,7 @@ urlpatterns = [
     path('studentparent/parentlogin/',spviews.parentLogin,name='parentlogin'),
     path('studentparent/parentlogin/personalinfo',spviews.profileInfo,name='parentinfo'),
     path('studentparent/parentlogin/updateinfo',spviews.updateInfo,name='updateinfo'),
+   # path('studentparent/parentlogin/orequest',spviews.oeRequest,name='orequestpage'),
     path('studentparent/parentlogin/searcheducator/',spviews.searchEducator,name='searcheducator'),
     path('studentparent/parentlogin/educatordetails/',spviews.showEducatorDetails,name='showeducatordetails'),
     path('studentparent/parentlogin/confirmrequest',spviews.confirmRequest,name='confirmrequest'),
