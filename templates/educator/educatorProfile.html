@@ -18,7 +18,7 @@
         <div class="container">
             <div>
                 <a class="navbar-brand">
-                    <span><img class="img-fluid" src="{% static 'home/logo2.jpg' %}"></span>
+                    <span><img class="img-fluid" src="{% static 'home/logo2.png' %}"></span>
                 </a>
                 <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"
                     style="color: #242943; background: #ffffff;">
@@ -35,10 +35,7 @@
                         <a class="nav-link active" href="{% url 'educatorinfo' %}" style="color: rgb(255,255,255); background-color: #f4476b">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'showrequest' %}" style="color: rgb(255,255,255);">Show Requests</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'acceptrequest' %}" style="color: rgb(255,255,255);">Accept Requests</a>
+                        <a class="nav-link" href="#" style="color: rgb(255,255,255);">Requests</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'educatorupdateinfo' %}" style="color: rgb(255,252,252);">Update Info</a>
@@ -64,7 +61,7 @@
                     {{ he.homeTutorName }}
                 {% endfor %}
             </h1>
-          <h5>Welcome to Tutors Finder System</h5>
+          <h5>Welcome Tutors Finder System</h5>
         </div>
       </div>
     </div>

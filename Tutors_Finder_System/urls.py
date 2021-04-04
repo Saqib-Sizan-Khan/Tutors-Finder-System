@@ -23,7 +23,10 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', hviews.homePage,name='home'),
-    path('aboutus/', hviews.aboutus,name='aboutus'),
+
+    #login code
+    #path('educator/login/',auth_views.LoginView.as_view(template_name='educator/login.html'),name="login"),
+    #path('educator/logout/',auth_views.LogoutView.as_view(template_name='educator/logout.html'),name="logout"),
 
     #educators url
     path('educatorauth/', eviews.educatorAuthication,name='educatorauth'),
@@ -46,11 +49,8 @@ urlpatterns = [
     path('studentparent/parentlogin/updateinfo',spviews.updateInfo,name='updateinfo'),
     path('studentparent/parentlogin/searcheducator/',spviews.searchEducator,name='searcheducator'),
     path('studentparent/parentlogin/educatordetails/',spviews.showEducatorDetails,name='showeducatordetails'),
+    path('studentparent/parentlogin/confirmrequest',spviews.confirmRequest,name='confirmrequest'),
     path('studentparent/logout/',spviews.logout,name='parentlogout'),
 
-    #request and deal url
-    path('studentparent/parentlogin/confirmrequest',hviews.confirmRequest,name='confirmrequest'),
-    path('educator/educatorlogin/showrequest',hviews.showRequest,name='showrequest'),
-    path('educator/educatorlogin/acceptrequest',hviews.acceptRequest,name='acceptrequest'),
-    path('educator/parentlogin/showdeals',hviews.showDeals,name='showdeals'),
+    path('educatorlist/', eviews.educatorList,name='educator List'),
 ]
