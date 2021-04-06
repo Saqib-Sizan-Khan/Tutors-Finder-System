@@ -15,7 +15,7 @@
 <body>
     <!-- Start: Registration Form with Photo -->
     <section class="register-photo"
-        style="background: linear-gradient(to right, #ffff66 0%, #cc99ff 100%);height: 800px;">
+        style="background: linear-gradient(45deg, var(--primary), var(--pink) 91%);height: 800px;">
         <!-- Start: Form Container -->
         <div class="form-container">
             <!-- Start: Image -->
@@ -64,7 +64,9 @@
                 <div class="form-group"><button class="btn btn-outline-light btn-block" type="submit" style="background: var(--pink);">
                     Sign Up
                 </button>
-                </div><a class="already" href="#">You already have an account? Login here.</a>
+                </div>
+                <center><a href="{% url 'parentlogin' %}" style="color: #0b9833">You already have an account?<br> Login here.</a></center>
+
             </form>
         </div><!-- End: Form Container -->
     </section><!-- End: Registration Form with Photo -->

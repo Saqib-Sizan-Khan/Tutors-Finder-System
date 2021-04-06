@@ -40,7 +40,9 @@
             <div class="form-group"><button class="btn btn-primary btn-block" type="submit"
                     style="background: rgb(33,74,128);">Log In</button></div>
 
-            <a class="forgot" href="#" style="color: var(--danger);font-size: 14px;">Don't have an Account? Sign Up here.</a>
+            <div style="color: red"><center>Don't have an Account?</center></div>
+            <center><a href="{% url 'heducatorsignup' %}" style="color: #0b2298">Sign Up as Home educator</a></center>
+            <center><a href="{% url 'oeducatorsignup' %}" style="color: #0b2298">Sign Up as Outside educator</a></center>
         </form>
     </section><!-- End: Login Form Dark -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

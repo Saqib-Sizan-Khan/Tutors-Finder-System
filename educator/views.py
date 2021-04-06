@@ -1,37 +1,11 @@
 from django.shortcuts import render,redirect
-from .forms import UserSignUpForm
 from .models import HomeEducator
 from .models import HomeEducator,OutsideEducator,HomeEducatorSubjects,OutsideEducatorSubjects,TemporaryE
 from django.db.models import Q
 from django.contrib import messages
 
-# Create your views here.
-
 def educatorAuthication(request):
     return render(request,'educator/authication.html')
-
-
-# def educatorSignUp(request):
-#
-#     if request.method == "POST":
-#         registration_form = UserSignUpForm(request.POST)
-#
-#         if registration_form.is_valid():
-#             registration_form.save()
-#
-#         else:
-#             context = {
-#                 'form': registration_form
-#             }
-#
-#             return render(request, "educator/signup.html", context)
-#
-#     signup_form = UserSignUpForm()
-#
-#     context = {
-#         'form':signup_form
-#     }
-#     return render(request,"educator/signup.html",context)
 
 
 def hEducatorSignup(request):
@@ -183,7 +157,7 @@ def educatorLogout(request):
     x = TemporaryE.objects.get(id=1)
     x.delete()
 
-    return redirect('home')
+    return render(request,'educator/educatorlogout.html')
 
 
 def educatorUpdateInfo(request):
@@ -312,6 +286,273 @@ def educatorUpdateInfo(request):
                 messages.info(request,"Password updated")
                 return render(request, 'educator/educatorUpdateInfo.html')
 
+        elif email!='' and location=='None' and contact!='' and password=='':
+
+            x = TemporaryE.objects.get(id=1)
+
+            if HomeEducator.objects.filter(Q(homeTutorName=x.tutorName) & Q(homeTutorPassword=x.tutorPassword)).exists():
+                heducator = HomeEducator.objects.get(Q(homeTutorName=x.tutorName) & Q(homeTutorPassword=x.tutorPassword))
+                heducator.homeTutorEmail = email
+                heducator.homeTutorContact = contact
+                heducator.save()
+
+                messages.info(request,"Email & Contact updated")
+                return render(request, 'educator/educatorUpdateInfo.html')
+
+            else:
+                oeducator = OutsideEducator.objects.get(Q(outsideTutorName=x.tutorName) & Q(outsideTutorPassword=x.tutorPassword))
+                oeducator.outsideTutorEmail = email
+                oeducator.outsideTutorContact = contact
+                oeducator.save()
+
+                messages.info(request,"Email & Contact updated")
+                return render(request, 'educator/educatorUpdateInfo.html')
+
+        elif email=='' and location!='None' and contact!='' and password=='':
+
+            x = TemporaryE.objects.get(id=1)
+
+            if HomeEducator.objects.filter(Q(homeTutorName=x.tutorName) & Q(homeTutorPassword=x.tutorPassword)).exists():
+                heducator = HomeEducator.objects.get(Q(homeTutorName=x.tutorName) & Q(homeTutorPassword=x.tutorPassword))
+                heducator.homeTutorLocation = location
+                heducator.homeTutorContact = contact
+                heducator.save()
+
+                messages.info(request,"Location & Contact updated")
+                return render(request, 'educator/educatorUpdateInfo.html')
+
+            else:
+                oeducator = OutsideEducator.objects.get(Q(outsideTutorName=x.tutorName) & Q(outsideTutorPassword=x.tutorPassword))
+                oeducator.outsideTutorLocation = location
+                oeducator.outsideTutorContact = contact
+                oeducator.save()
+
+                messages.info(request,"Location & Contact updated")
+                return render(request, 'educator/educatorUpdateInfo.html')
+
+        elif email!='' and location!='None' and contact=='' and password=='':
+
+            x = TemporaryE.objects.get(id=1)
+
+            if HomeEducator.objects.filter(Q(homeTutorName=x.tutorName) & Q(homeTutorPassword=x.tutorPassword)).exists():
+                heducator = HomeEducator.objects.get(Q(homeTutorName=x.tutorName) & Q(homeTutorPassword=x.tutorPassword))
+                heducator.homeTutorEmail = email
+                heducator.homeTutorLocation = location
+                heducator.save()
+
+                messages.info(request,"Email & Location updated")
+                return render(request, 'educator/educatorUpdateInfo.html')
+
+            else:
+                oeducator = OutsideEducator.objects.get(Q(outsideTutorName=x.tutorName) & Q(outsideTutorPassword=x.tutorPassword))
+                oeducator.outsideTutorEmail = email
+                oeducator.outsideTutorLocation = location
+                oeducator.save()
+
+                messages.info(request,"Email & Location updated")
+                return render(request, 'educator/educatorUpdateInfo.html')
+
+        elif email!='' and location!='None' and contact!='' and password=='':
+
+            x = TemporaryE.objects.get(id=1)
+
+            if HomeEducator.objects.filter(Q(homeTutorName=x.tutorName) & Q(homeTutorPassword=x.tutorPassword)).exists():
+                heducator = HomeEducator.objects.get(Q(homeTutorName=x.tutorName) & Q(homeTutorPassword=x.tutorPassword))
+                heducator.homeTutorEmail = email
+                heducator.homeTutorLocation = location
+                heducator.homeTutorContact = contact
+                heducator.save()
+
+                messages.info(request,"Email, Location & Contact updated")
+                return render(request, 'educator/educatorUpdateInfo.html')
+
+            else:
+                oeducator = OutsideEducator.objects.get(Q(outsideTutorName=x.tutorName) & Q(outsideTutorPassword=x.tutorPassword))
+                oeducator.outsideTutorEmail = email
+                oeducator.outsideTutorLocation = location
+                oeducator.outsideTutorContact = contact
+                oeducator.save()
+
+                messages.info(request,"Email, Location & Contact updated")
+                return render(request, 'educator/educatorUpdateInfo.html')
+
+        elif email!='' and location=='None' and contact=='' and password!='' and password==password_repeat:
+
+            x = TemporaryE.objects.get(id=1)
+
+            if HomeEducator.objects.filter(Q(homeTutorName=x.tutorName) & Q(homeTutorPassword=x.tutorPassword)).exists():
+                heducator = HomeEducator.objects.get(Q(homeTutorName=x.tutorName) & Q(homeTutorPassword=x.tutorPassword))
+                heducator.homeTutorEmail = email
+                heducator.homeTutorPassword = password
+                x.tutorPassword = password
+                heducator.save()
+                x.save()
+
+                messages.info(request,"Email & Password updated")
+                return render(request, 'educator/educatorUpdateInfo.html')
+
+            else:
+                oeducator = OutsideEducator.objects.get(Q(outsideTutorName=x.tutorName) & Q(outsideTutorPassword=x.tutorPassword))
+                oeducator.outsideTutorEmail = email
+                oeducator.outsideTutorPassword = password
+                x.tutorPassword = password
+                oeducator.save()
+                x.save()
+
+                messages.info(request,"Email & Password updated")
+                return render(request, 'educator/educatorUpdateInfo.html')
+
+        elif email == '' and location != 'None' and contact == '' and password != '' and password == password_repeat:
+
+            x = TemporaryE.objects.get(id=1)
+
+            if HomeEducator.objects.filter(
+                    Q(homeTutorName=x.tutorName) & Q(homeTutorPassword=x.tutorPassword)).exists():
+                heducator = HomeEducator.objects.get(
+                    Q(homeTutorName=x.tutorName) & Q(homeTutorPassword=x.tutorPassword))
+                heducator.homeTutorLocation = location
+                heducator.homeTutorPassword = password
+                x.tutorPassword = password
+                heducator.save()
+                x.save()
+
+                messages.info(request, "Location & Password updated")
+                return render(request, 'educator/educatorUpdateInfo.html')
+
+            else:
+                oeducator = OutsideEducator.objects.get(
+                    Q(outsideTutorName=x.tutorName) & Q(outsideTutorPassword=x.tutorPassword))
+                oeducator.outsideTutorEmail = email
+                oeducator.outsideTutorPassword = password
+                x.tutorPassword = password
+                oeducator.save()
+                x.save()
+
+                messages.info(request, "Location & Password updated")
+                return render(request, 'educator/educatorUpdateInfo.html')
+
+        elif email == '' and location == 'None' and contact != '' and password != '' and password == password_repeat:
+
+            x = TemporaryE.objects.get(id=1)
+
+            if HomeEducator.objects.filter(
+                    Q(homeTutorName=x.tutorName) & Q(homeTutorPassword=x.tutorPassword)).exists():
+                heducator = HomeEducator.objects.get(
+                    Q(homeTutorName=x.tutorName) & Q(homeTutorPassword=x.tutorPassword))
+                heducator.homeTutorContact = contact
+                heducator.homeTutorPassword = password
+                x.tutorPassword = password
+                heducator.save()
+                x.save()
+
+                messages.info(request, "Contact & Password updated")
+                return render(request, 'educator/educatorUpdateInfo.html')
+
+            else:
+                oeducator = OutsideEducator.objects.get(
+                    Q(outsideTutorName=x.tutorName) & Q(outsideTutorPassword=x.tutorPassword))
+                oeducator.outsideTutorContact = contact
+                oeducator.outsideTutorPassword = password
+                x.tutorPassword = password
+                oeducator.save()
+                x.save()
+
+                messages.info(request, "Contact & Password updated")
+                return render(request, 'educator/educatorUpdateInfo.html')
+
+        elif email != '' and location != 'None' and contact == '' and password != '' and password == password_repeat:
+
+            x = TemporaryE.objects.get(id=1)
+
+            if HomeEducator.objects.filter(
+                    Q(homeTutorName=x.tutorName) & Q(homeTutorPassword=x.tutorPassword)).exists():
+                heducator = HomeEducator.objects.get(
+                    Q(homeTutorName=x.tutorName) & Q(homeTutorPassword=x.tutorPassword))
+                heducator.homeTutorEmail = email
+                heducator.homeTutorLocation = location
+                heducator.homeTutorPassword = password
+                x.tutorPassword = password
+                heducator.save()
+                x.save()
+
+                messages.info(request, "Email, Location & Password updated")
+                return render(request, 'educator/educatorUpdateInfo.html')
+
+            else:
+                oeducator = OutsideEducator.objects.get(
+                    Q(outsideTutorName=x.tutorName) & Q(outsideTutorPassword=x.tutorPassword))
+                oeducator.outsideTutorEmail = email
+                oeducator.outsideTutorPassword = password
+                oeducator.outsideTutorLocation = location
+                x.tutorPassword = password
+                oeducator.save()
+                x.save()
+
+                messages.info(request, "Email, Location & Password updated")
+                return render(request, 'educator/educatorUpdateInfo.html')
+
+        elif email != '' and contact != '' and password != '' and password == password_repeat:
+
+            x = TemporaryE.objects.get(id=1)
+
+            if HomeEducator.objects.filter(
+                    Q(homeTutorName=x.tutorName) & Q(homeTutorPassword=x.tutorPassword)).exists():
+                heducator = HomeEducator.objects.get(
+                    Q(homeTutorName=x.tutorName) & Q(homeTutorPassword=x.tutorPassword))
+                heducator.homeTutorEmail = email
+                heducator.homeTutorContact = contact
+                heducator.homeTutorPassword = password
+                x.tutorPassword = password
+                heducator.save()
+                x.save()
+
+                messages.info(request, "Email, Contact & Password updated")
+                return render(request, 'educator/educatorUpdateInfo.html')
+
+            else:
+                oeducator = OutsideEducator.objects.get(
+                    Q(outsideTutorName=x.tutorName) & Q(outsideTutorPassword=x.tutorPassword))
+                oeducator.outsideTutorEmail = email
+                oeducator.outsideTutorContact = contact
+                oeducator.outsideTutorPassword = password
+                x.tutorPassword = password
+                oeducator.save()
+                x.save()
+
+                messages.info(request, "Email, Contact & Password updated")
+                return render(request, 'educator/educatorUpdateInfo.html')
+
+        elif email == '' and location != 'None' and contact != '' and password != '' and password == password_repeat:
+
+            x = TemporaryE.objects.get(id=1)
+
+            if HomeEducator.objects.filter(
+                    Q(homeTutorName=x.tutorName) & Q(homeTutorPassword=x.tutorPassword)).exists():
+                heducator = HomeEducator.objects.get(
+                    Q(homeTutorName=x.tutorName) & Q(homeTutorPassword=x.tutorPassword))
+                heducator.homeTutorContact = contact
+                heducator.homeTutorLocation = location
+                heducator.homeTutorPassword = password
+                x.tutorPassword = password
+                heducator.save()
+                x.save()
+
+                messages.info(request, "Contact, Location & Password updated")
+                return render(request, 'educator/educatorUpdateInfo.html')
+
+            else:
+                oeducator = OutsideEducator.objects.get(
+                    Q(outsideTutorName=x.tutorName) & Q(outsideTutorPassword=x.tutorPassword))
+                oeducator.outsideTutorContact = contact
+                oeducator.outsideTutorPassword = password
+                oeducator.outsideTutorLocation = location
+                x.tutorPassword = password
+                oeducator.save()
+                x.save()
+
+                messages.info(request, "Contact, Location & Password updated")
+                return render(request, 'educator/educatorUpdateInfo.html')
+
         else:
             messages.info(request, "Info not update")
             return render(request, 'educator/educatorUpdateInfo.html')
@@ -388,33 +629,3 @@ def subjectChoiceOutside(request):
 
     else:
         return render(request,'educator/subjectOutside.html')
-
-
-
-def educatorList(request):
-
-    # delete item
-    # heducator = HomeEducator.objects.filter(id__range=(131,133))
-    # heducator.delete()
-
-    # order by
-    # heducator = HomeEducator.objects.filter().order_by("name").values_list()
-    # heducator = HomeEducator.objects.values_list("name","id","location")
-
-    # And Operation
-    # heducator = HomeEducator.objects.filter(Q(name__contains="Md.") & Q(name__contains="Islam")).values_list()
-
-    # Update one item
-    # heducator = HomeEducator.objects.get(id=117)
-    # heducator.location = "Mirpur"
-    # heducator.save()
-
-    # Update many items
-    # heducator = HomeEducator.objects.filter(rating=10)
-    # heducator.update(rating=0)
-
-    heducator = HomeEducator.objects.filter().values_list()
-
-    context = {"heducator": heducator}
-
-    return render(request, "educator/educatorList.html", context)

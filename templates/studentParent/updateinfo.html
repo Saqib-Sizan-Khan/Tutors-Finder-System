@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Parent Update INFO</title>
+    <title>Parent update info</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700">
@@ -21,7 +21,7 @@
         <div class="container">
             <div>
                 <a class="navbar-brand">
-                    <span><img class="img-fluid" src="{% static 'home/logo2.png' %}"></span>
+                    <span><img class="img-fluid" src="{% static 'home/logo2.jpg' %}"></span>
                 </a>
                 <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"
                     style="color: #242943; background: #ffffff;">
@@ -47,6 +47,9 @@
                         <a class="nav-link" href="{% url 'confirmrequest' %}" style="color: rgb(255,255,255);">Sent Request</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'showdeals' %}" style="color: rgb(255,255,255);">Show Deals</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link active" href="{% url 'updateinfo' %}" style="color: rgb(255,252,252); background-color: #f4476b">Update Info</a>
                     </li>
                     <li class="nav-item">
@@ -64,7 +67,7 @@
         <div class="card shadow mb-3"
             style="width: 600px;height: 500px;margin-top: 100px;background: transparent;border-width: 2px;border-color: var(--warning);">
             <div class="card-header py-3">
-                <p class="m-0 font-weight-bold" style="color: #CC0066;font-size: 30px;">Update Profile</p>
+                <p class="text-primary m-0 font-weight-bold" style="font-size: 20px;">Update Profile</p>
             </div>
             <div class="card-body">
                 <form method="post" action="{% url 'updateinfo' %}">
@@ -134,7 +137,7 @@
                             style="padding-top: 10px;padding-bottom: 10px;padding-right: 20px;padding-left: 20px;font-size: 18px;">Save</button>
                     </div>
                 </form>
-                <p class="m-0 font-weight-bold" style="color: red;">If you want you can only update one field.</p>
+                <p class="m-0 font-weight-bold" style="color: #2e46c1;">If you want you can only update one field.</p>
             </div>
         </div>
     </div><!-- End: user settings -->
