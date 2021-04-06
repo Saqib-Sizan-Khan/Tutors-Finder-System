@@ -21,7 +21,7 @@
         <div class="container">
             <div>
                 <a class="navbar-brand">
-                    <span><img class="img-fluid" src="{% static 'home/logo2.png' %}"></span>
+                    <span><img class="img-fluid" src="{% static 'home/logo2.jpg' %}"></span>
                 </a>
                 <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"
                     style="color: #242943; background: #ffffff;">
@@ -38,7 +38,10 @@
                         <a class="nav-link" href="{% url 'educatorinfo' %}" style="color: rgb(255,255,255);">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: rgb(255,255,255);">Requests</a>
+                        <a class="nav-link" href="{% url 'showrequest' %}" style="color: rgb(255,255,255);">Show Requests</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'acceptrequest' %}" style="color: rgb(255,255,255);">Accept Requests</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="{% url 'educatorupdateinfo' %}" style="color: rgb(255,252,252); background-color: #f4476b">Update Info</a>
@@ -58,7 +61,7 @@
         <div class="card shadow mb-3"
             style="width: 600px;height: 500px;margin-top: 100px;background: transparent;border-width: 2px;border-color: #055ada;">
             <div class="card-header py-3">
-                <p class="text m-0 font-weight-bold" style="font-size: 30px; color: #CC0066">Update Profile</p>
+                <p class="text m-0 font-weight-bold" style="font-size: 20px; color: #0b9833">Update Profile</p>
             </div>
             <div class="card-body">
                 <form method="post" action="{% url 'educatorupdateinfo' %}">
@@ -128,7 +131,7 @@
                             style="padding-top: 10px;padding-bottom: 10px;padding-right: 20px;padding-left: 20px;font-size: 18px;">Save</button>
                     </div>
                 </form>
-                <p class="m-0 font-weight-bold" style="color: red;">If you want you can only update one field.</p>
+                <p class="m-0 font-weight-bold" style="color: #0b9833;">If you want you can only update one field.</p>
             </div>
         </div>
     </div><!-- End: user settings -->

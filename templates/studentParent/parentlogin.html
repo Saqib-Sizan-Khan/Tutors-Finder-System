@@ -7,7 +7,7 @@
     <title>Log in | Student's Parent</title>
 
     {% load static %}
-    <link rel="stylesheet" href="{% static 'studentParent/parentlogin.css' %}">
+    <link rel="stylesheet" href="{% static 'studentParent/splogin.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 
@@ -39,7 +39,7 @@
 
             <div class="form-group"><button class="btn btn-outline-warning btn-block" type="submit">Log In</button></div>
 
-            <a class="forgot" href="#" style="color: rgb(255,255,255);font-size: 16px;">Don't have an Account? <br>Sign Up here.</a>
+            <a class="forgot" href="{% url 'parentsignup' %}" style="color: rgb(247,255,10);font-size: 16px;">Don't have an Account? <br>Sign Up here.</a>
         </form>
     </section><!-- End: Login Form Dark -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

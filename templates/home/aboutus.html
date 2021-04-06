@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'home/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'home/teamdes.css' %}">
+</head>
+<body>
+
+    <nav class="navbar navbar-light navbar-expand-md navbar-fixed-top navigation-clean-button"
+         style="color: rgb(15,127,239); max-height: 520px; min-height: 120px;">
+        <div class="container">
+            <div>
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <span><img class="img-fluid" src="{% static 'home/logo2.jpg' %}"></span>
+                </a>
+                <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"
+                    style="color: #242943; background: #ffffff;">
+
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav nav-right" style="color: rgb(255, 255, 255);">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}" style="color: rgb(255,255,255);">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'educatorauth' %}" style="color: rgb(255,255,255);">Educator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'parentauth' %}" style="color: rgb(252,252,252);">Parent</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'aboutus' %}" style="color: rgb(255,252,252); background-color: #f4476b">About Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Start: Team Boxed -->
+    <section class="team-boxed">
+        <div class="container" style="background: linear-gradient(#f99602 10%, #214a80 89%);">
+            <!-- Start: Intro -->
+            <div class="intro">
+                <h2 class="text-center">Project Team</h2>
+            </div><!-- End: Intro -->
+            <!-- Start: People -->
+            <div class="row people">
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box"><img class="rounded-circle" src="{% static 'home/sizan.jpg' %}">
+                        <h3 class="name">Saqib Sizan Khan</h3>
+                        <p class="title">Developer</p>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus.
+                            Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, et interdum justo
+                            suscipit id. Etiam dictum feugiat tellus, a semper massa. </p>
+                        <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i
+                                    class="fa fa-github"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box"><img class="rounded-circle" src="{% static 'home/eva.jpeg' %}">
+                        <h3 class="name">Jannatul Ferdous Eva</h3>
+                        <p class="title"><strong>DEVELOPER</strong><br></p>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus.
+                            Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, et interdum justo
+                            suscipit id. Etiam dictum feugiat tellus, a semper massa. </p>
+                        <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i
+                                    class="fa fa-github"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box"><img class="rounded-circle" src="{% static 'home/ayman.jpeg' %}">
+                        <h3 class="name">Ayman Hasib</h3>
+                        <p class="title"><strong>DEVELOPER</strong><br></p>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus.
+                            Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, et interdum justo
+                            suscipit id. Etiam dictum feugiat tellus, a semper massa. </p>
+                        <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i
+                                    class="fa fa-github"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                    </div>
+                </div>
+            </div><!-- End: People -->
+        </div>
+    </section><!-- End: Team Boxed -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

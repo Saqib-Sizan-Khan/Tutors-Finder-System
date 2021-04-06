@@ -7,7 +7,7 @@
     <title>Sign Up | Outside Educator</title>
 
     {% load static %}
-    <link rel="stylesheet" href="{% static 'educator/oeducator.css' %}">
+    <link rel="stylesheet" href="{% static 'educator/outeducator.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
 
 </head>
@@ -66,7 +66,7 @@
                 </div>
 
                 <div class="form-group"><button class="btn btn-outline-success btn-block" type="submit">Sign Up</button></div>
-                <a class="already" href="#">You already have an account? Login here.</a>
+                <center><a href="{% url 'login' %}" style="color: #0b2298">You already have an account?<br> Login here.</a></center>
             </form>
         </div><!-- End: Form Container -->
     </section><!-- End: Registration Form with Photo -->

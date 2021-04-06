@@ -1,35 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
-
-# class HomeEducator(models.Model):
-#     homeTutorName = models.TextField(db_column='Tutor Name')
-#     homeTutorID = models.IntegerField(primary_key=True, db_column='Tutor Id')
-#     homeTutorEmail = models.EmailField(max_length=50, db_column='Email')
-#     university = models.TextField(db_column='University')
-#     deparment = models.TextField(db_column='Deparment')
-#     experience = models.CharField(max_length=20, db_column='Experience')
-#     homeTutorAddress = models.TextField(db_column='Address')
-#     homeTutorContact = models.CharField(max_length=11, db_column='Contact')
-#     homeTutorRating = models.IntegerField(db_column='Rating')
-#
-#     class Meta:
-#         db_table = 'Home Tutor Info'
-#
-# class OutsideEducator(models.Model):
-#     outsideTutorName = models.TextField(db_column='Tutor Name')
-#     outsideTutorID = models.IntegerField(primary_key=True, db_column='Tutor Id')
-#     outsideTutorEmail = models.EmailField(max_length=50, db_column='Email')
-#     institute = models.TextField(db_column='Institute')
-#     designation = models.TextField(db_column='Designation')
-#     outsideTutorAddress = models.TextField(db_column='Address')
-#     outsideTutorContact = models.CharField(max_length=11, db_column='Contact')
-#     outsideTutorRating = models.IntegerField(db_column='Rating')
-#
-#     class Meta:
-#         db_table = 'Outside Tutor Info'
-
 
 class HomeEducatorSubjects(models.Model):
     firstSubject = models.TextField(db_column='1st Subject')

@@ -1,6 +1,6 @@
 import pandas as pd
-from educator.models import HomeEducator,OutsideEducator,HomeEducatorSubjects,OutsideEducatorSubjects
-from home.models import Subjects
+from educator.models import *
+from studentParent.models import *
 
 #home educator data read
 df = pd.read_csv("Home_Educator_Info.csv")
@@ -26,6 +26,8 @@ for i in range(len(df)):
     oes = OutsideEducatorSubjects(firstSubject=df["Subject 1"][i],secondSubject=df["Subject 2"][i],thirdSubject=df["Subject 3"][i])
     oes.save()
 
-# educators = HomeEducator.objects.filter(location='Mirpur')
-# for educator in educators:
-#     print(educator.name,educator.id)
+#student Parent data read
+df = pd.read_csv("StudentsParentInfo.csv")
+for i in range(len(df)):
+    sp = StudentParent(parentName=df["Parent Name"][i],parentEmail=df["Email"][i],parentLocation=df["Location"][i],parentContact=df["Contact"][i],parentPassword=df["Password"][i])
+    sp.save()
