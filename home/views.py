@@ -18,187 +18,142 @@ def confirmRequest(request):
     if request.method == "POST":
         educatortype = request.POST["educatortype"]
         educatorid = request.POST["educatorid"]
-        parentid = request.POST["parentid"]
 
         if educatortype == "Home Educator":
             if HomeEducator.objects.filter(id=educatorid).exists():
-                if StudentParent.objects.filter(id=parentid).exists():
 
-                    parent = StudentParent.objects.get(id=parentid)
-                    x = TemporarySP.objects.get(id=1)
+                x = TemporarySP.objects.get(id=1)
+                parent = StudentParent.objects.get(Q(parentName=x.parentName) & Q(parentPassword=x.parentPassword))
 
-                    if parent.parentName == x.parentName and parent.parentPassword == x.parentPassword:
+                y = HomeEducator.objects.get(id=educatorid)
 
-                        y = HomeEducator.objects.get(id=educatorid)
-                        req = Request(educatorType=educatortype,educatorId=educatorid,educatorName=y.homeTutorName,
-                                      parentId=parentid,parentName=x.parentName)
+                req = Request(educatorType=educatortype,educatorId=educatorid,educatorName=y.homeTutorName,
+                              parentId=parent.id,parentName=parent.parentName)
 
-                        req.save()
-                        return redirect("confirmrequest")
-                    else:
-                        messages.info(request, "Invalid Parent Id")
-                else:
-                    messages.info(request,"Invalid Parent Id")
+                req.save()
+                messages.info(request, "Request Sent")
+                return redirect("confirmrequest")
+
             else:
                 messages.info(request,"Invalid Educator Id")
 
         else:
             if OutsideEducator.objects.filter(id=educatorid).exists():
-                if StudentParent.objects.filter(id=parentid).exists():
 
-                    parent = StudentParent.objects.get(id=parentid)
-                    x = TemporarySP.objects.get(id=1)
+                x = TemporarySP.objects.get(id=1)
+                parent = StudentParent.objects.get(Q(parentName=x.parentName) & Q(parentPassword=x.parentPassword))
 
-                    if parent.parentName == x.parentName and parent.parentPassword == x.parentPassword:
+                y = OutsideEducator.objects.get(id=educatorid)
 
-                        y = OutsideEducator.objects.get(id=educatorid)
-                        req = Request(educatorType=educatortype,educatorName=y.outsideTutorName,educatorId=educatorid,
-                                        parentId=parentid,parentName=x.parentName)
+                req = Request(educatorType=educatortype, educatorId=educatorid, educatorName=y.outsideTutorName,
+                              parentId=parent.id, parentName=parent.parentName)
 
-                        req.save()
-                        messages.info(request,"Request Sent")
-                    else:
-                        messages.info(request, "Invalid Parent Id")
-                else:
-                    messages.info(request,"Invalid Parent Id")
+                req.save()
+                messages.info(request, "Request Sent")
+                return redirect("confirmrequest")
+
             else:
-                messages.info(request,"Invalid Educator Id")
+                messages.info(request, "Invalid Educator Id")
 
     return render(request, "home/confirmrequest.html")
 
 
 def showRequest(request):
-    if request.method == "POST":
-        educatortype = request.POST["educatortype"]
-        educatorid = request.POST["educatorid"]
 
-        if educatorid == "":
-            messages.info(request, "Invalid Educator ID")
-            return redirect('showrequest')
+    y = TemporaryE.objects.get(id=1)
 
-        if educatortype == "Home Educator":
+    if request.method == "GET":
 
-            x = HomeEducator.objects.get(id=educatorid)
-            y = TemporaryE.objects.get(id=1)
+        if y.tutorType == "Home Educator":
 
-            if x.homeTutorName == y.tutorName:
-                req = Request.objects.filter(Q(educatorId=educatorid) & Q(educatorType=educatortype))
-                context = {"req":req}
-                return render(request, 'home/showrequest.html', context)
+            educator = HomeEducator.objects.get(Q(homeTutorName=y.tutorName) & Q(homeTutorPassword=y.tutorPassword))
 
-            else:
-                messages.info(request,"Invalid Educator ID")
+            req = Request.objects.filter(educatorId=educator.id)
+            context = {"req":req}
+            return render(request, 'home/showrequest.html', context)
 
         else:
-            x = OutsideEducator.objects.get(id=educatorid)
-            y = TemporaryE.objects.get(id=1)
+            educator = OutsideEducator.objects.get(Q(outsideTutorName=y.tutorName) & Q(outsideTutorPassword=y.tutorPassword))
 
-            if x.outsideTutorName == y.tutorName:
-                req = Request.objects.filter(Q(educatorId=educatorid) & Q(educatorType=educatortype))
-                context = {"req": req}
-                return render(request, 'home/showrequest.html', context)
+            req = Request.objects.filter(educatorId=educator.id)
+            context = {"req": req}
+            return render(request, 'home/showrequest.html', context)
 
-            else:
-                messages.info(request,"Invalid Educator ID")
-
-
-    return render(request, "home/showrequest.html")
-
-
-def acceptRequest(request):
-
-    if request.method == "POST":
-        educatortype = request.POST["educatortype"]
-        educatorid = request.POST["educatorid"]
-        parentid = request.POST["parentid"]
-
-        if educatortype == "Home Educator":
-            if HomeEducator.objects.filter(id=educatorid).exists():
-                if StudentParent.objects.filter(id=parentid).exists():
-
-                    home_tutor = HomeEducator.objects.get(id=educatorid)
-                    x = TemporaryE.objects.get(id=1)
-
-                    if home_tutor.homeTutorName == x.tutorName and home_tutor.homeTutorPassword == x.tutorPassword:
-
-                        y = StudentParent.objects.get(id=parentid)
-                        deal = Deals(educatorType=educatortype,educatorId=educatorid,educatorName=x.tutorName,
-                                      parentId=parentid,parentName=y.parentName)
-
-                        if Request.objects.filter(Q(parentId=parentid) & Q(educatorId=educatorid)).exists():
-                            req = Request.objects.get(Q(parentId=parentid) & Q(educatorId=educatorid))
-
-                            deal.save()
-                            req.delete()
-                            messages.info(request, "Request accepted")
-                        else:
-                            messages.info(request,"Invalid Parent Id")
-                            return redirect("acceptrequest")
-
-                        messages.info(request,"Request accepted")
-                    else:
-                        messages.info(request, "Invalid Educator Id")
-                else:
-                    messages.info(request,"Invalid Parent Id")
-            else:
-                messages.info(request,"Invalid Educator Id")
-
-        else:
-            if OutsideEducator.objects.filter(id=educatorid).exists():
-                if StudentParent.objects.filter(id=parentid).exists():
-
-                    outside_tutor = OutsideEducator.objects.get(id=educatorid)
-                    x = TemporaryE.objects.get(id=1)
-
-                    if outside_tutor.outsideTutorName == x.tutorName and outside_tutor.outsideTutorPassword == x.tutorPassword:
-
-                        y = StudentParent.objects.get(id=parentid)
-                        deal = Deals(educatorType=educatortype, educatorId=educatorid, educatorName=x.tutorName,
-                                     parentId=parentid, parentName=y.parentName)
-
-                        if Request.objects.filter(Q(parentId=parentid) & Q(educatorId=educatorid)).exists():
-                            req = Request.objects.get(Q(parentId=parentid) & Q(educatorId=educatorid))
-
-                            deal.save()
-                            req.delete()
-                            messages.info(request, "Request accepted")
-                        else:
-                            messages.info(request, "Invalid Parent Id")
-                            return redirect("acceptrequest")
-                    else:
-                        messages.info(request, "Invalid Educator Id")
-                else:
-                    messages.info(request,"Invalid Parent Id")
-            else:
-                messages.info(request,"Invalid Educator Id")
-
-    return render(request,'home/acceptrequest.html')
-
-
-def showDeals(request):
-    if request.method == "POST":
+    else:
         parentid = request.POST["parentid"]
 
         if parentid == "":
-            messages.info(request, "Invalid parent ID")
-            return redirect('showdeals')
+            messages.info(request,"Invalid Parent ID")
+            return redirect('showrequest')
 
-        if StudentParent.objects.filter(id=parentid).exists():
+        if y.tutorType == "Home Educator":
 
-            x = StudentParent.objects.get(id=parentid)
-            y = TemporarySP.objects.get(id=1)
+            educator = HomeEducator.objects.get(Q(homeTutorName=y.tutorName) & Q(homeTutorPassword=y.tutorPassword))
 
-            if x.parentName == y.parentName:
+            if StudentParent.objects.filter(id=parentid).exists():
 
-                deal = Deals.objects.filter(parentId=parentid)
+                if Request.objects.filter(Q(parentId=parentid) & Q(educatorId=educator.id)).exists():
 
-                context = {"deal":deal}
-                return render(request, 'home/showdeals.html', context)
+                    req = Request.objects.get(Q(parentId=parentid) & Q(educatorId=educator.id))
 
+                    deal = Deals(educatorType=req.educatorType, educatorId=req.educatorId, educatorName=req.educatorName,
+                                  parentId=req.parentId, parentName=req.parentName)
+
+                    deal.save()
+                    req.delete()
+                    messages.info(request, "Request accepted")
+                else:
+                    messages.info(request, "No such request")
             else:
-                messages.info(request,"Invalid Parent ID")
+                messages.info(request,"Invalid Parent Id")
 
         else:
-            messages.info(request, "Invalid Parent ID")
+
+            educator = OutsideEducator.objects.get(Q(outsideTutorName=y.tutorName) & Q(outsideTutorPassword=y.tutorPassword))
+
+            if StudentParent.objects.filter(id=parentid).exists():
+
+                if Request.objects.filter(Q(parentId=parentid) & Q(educatorId=educator.id)).exists():
+
+                    req = Request.objects.get(Q(parentId=parentid) & Q(educatorId=educator.id))
+
+                    deal = Deals(educatorType=req.educatorType, educatorId=req.educatorId,educatorName=req.educatorName,
+                                 parentId=req.parentId, parentName=req.parentName)
+
+                    deal.save()
+                    req.delete()
+                    messages.info(request, "Request accepted")
+                else:
+                    messages.info(request, "No such request")
+            else:
+                messages.info(request, "Invalid Parent Id")
+
+        if y.tutorType == "Home Educator":
+
+            educator = HomeEducator.objects.get(Q(homeTutorName=y.tutorName) & Q(homeTutorPassword=y.tutorPassword))
+
+            req = Request.objects.filter(educatorId=educator.id)
+            context = {"req":req}
+            return render(request, 'home/showrequest.html', context)
+
+        else:
+            educator = OutsideEducator.objects.get(Q(outsideTutorName=y.tutorName) & Q(outsideTutorPassword=y.tutorPassword))
+
+            req = Request.objects.filter(educatorId=educator.id)
+            context = {"req": req}
+            return render(request, 'home/showrequest.html', context)
+
+
+def showDeals(request):
+
+    if request.method == "GET":
+
+        x = TemporarySP.objects.get(id=1)
+        parent = StudentParent.objects.get(Q(parentName=x.parentName) & Q(parentPassword=x.parentPassword))
+
+        deal = Deals.objects.filter(parentId=parent.id)
+
+        context = {"deal":deal}
+        return render(request, 'home/showdeals.html', context)
 
     return render(request,'home/showdeals.html')

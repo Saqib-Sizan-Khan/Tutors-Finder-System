@@ -100,7 +100,7 @@ def educatorLogin(request):
 
                     oeducator = OutsideEducator.objects.filter(Q(outsideTutorName=username) & Q(outsideTutorPassword=password))
 
-                    temporary_info = TemporaryE(id=1, tutorName=username, tutorPassword=password)
+                    temporary_info = TemporaryE(id=1, tutorName=username, tutorPassword=password, tutorType=educatorType)
                     temporary_info.save()
 
                     context = {"oeducator": oeducator}
@@ -119,7 +119,7 @@ def educatorLogin(request):
 
                     heducator = HomeEducator.objects.filter(Q(homeTutorName=username) & Q(homeTutorPassword=password))
 
-                    temporary_info = TemporaryE(id=1, tutorName=username, tutorPassword=password)
+                    temporary_info = TemporaryE(id=1, tutorName=username, tutorPassword=password, tutorType=educatorType)
                     temporary_info.save()
 
                     context = {"heducator": heducator}

@@ -59,47 +59,20 @@
 
     <div class="container-fluid">
         <div class="row" style="height: 1000px; background: linear-gradient(to right, #ffff66 0%, #cc99ff 100%);">
-            <div class="col-2" style="margin-top: 200px;">
 
-                <form method="post" action="{% url "showdeals" %}">
-                    {% csrf_token %}
-{#                    <div class="form-group">#}
-{#                        <select class="border-info shadow form-control" name="educatortype">#}
-{#                            <optgroup label="Educator Type">#}
-{#                                <option value="Home Educator">Home Educator</option>#}
-{#                                <option value="Outside Educator">Outside Educator</option>#}
-{#                            </optgroup>#}
-{#                        </select>#}
-{#                    </div>#}
-                    <div class="form-group">
-                        <div>
-                        <input class="border-warning shadow form-control" type="number"
-                            name="parentid" min="1" placeholder="Parent ID">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-dark text-success border-primary shadow" type="submit"
-                                style="min-width: 90px;max-width: 200px;color: var(--red);font-size: 20px;">Show Deals</button>
-                    </div>
+            <div class="col-2" style="margin-top: 200px;"></div>
 
-                    <div>
-                        {% for message in messages %}
-                            <h4 style="color: var(--red);" align="center">{{ message }}</h4>
-                        {% endfor %}
-                    </div>
-                </form>
-            </div>
             <div class="col-8">
                 <div class="table-responsive">
                     <table class="table">
-                        <thead>
+                        <thead style="font-size: 25px">
                             <tr>
                                 <th>Educator Name</th>
                                 <th>Educator ID</th>
                                 <th>Educator Type</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody style="font-size: 20px">
                             {% for d in deal %}
                                 <tr>
                                     <td>{{ d.educatorName }}</td>
