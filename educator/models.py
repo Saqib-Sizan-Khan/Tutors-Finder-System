@@ -50,6 +50,7 @@ class TemporaryE(models.Model):
     id = models.IntegerField(primary_key=True)
     tutorName = models.TextField(db_column='Tutor Name')
     tutorPassword = models.CharField(max_length=20,db_column='Password')
+    tutorType = models.CharField(max_length=20,db_column='Type',default='')
 
     class Meta:
         db_table = "Educator Temporary Table"

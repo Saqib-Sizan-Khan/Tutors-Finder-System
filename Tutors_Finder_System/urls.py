@@ -51,6 +51,5 @@ urlpatterns = [
     #request and deal url
     path('studentparent/parentlogin/confirmrequest',hviews.confirmRequest,name='confirmrequest'),
     path('educator/educatorlogin/showrequest',hviews.showRequest,name='showrequest'),
-    path('educator/educatorlogin/acceptrequest',hviews.acceptRequest,name='acceptrequest'),
     path('educator/parentlogin/showdeals',hviews.showDeals,name='showdeals'),
 ]
